@@ -242,7 +242,7 @@ localhost
 	8960   9018   19160.90  1382343969.60
 	65495  65553  14988.38  7860266193.12
 
-## result: Open vSwitch 1.11.0 with internal port
+## result: Open vSwitch 2.3.2 with internal port
 
 NIC involved
 

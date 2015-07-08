@@ -101,4 +101,11 @@ Bridge setup and teardown (teardown is implicit)
 	./netns-env-bridge.sh setup
 	./netns-env-bridge.sh
 
+For `*RR` type tests, 4 columns are presented in the `sum` (summary) output
+
+- 1st column is the value used in `-r`
+- 2nd column is ethernet frame size by adding 58 (`20 + 20 + 18)` to the value in 1st column
+- 3rd column is the sum of reported TPS (transaction per second) value from netperf instance(s)
+- 4th column is the calculated transmission rate (bits/s) based on the ethernet frame size and tps
+
 Some test results are collected in `out/` directory

@@ -8,7 +8,7 @@ Parameters for running test
 	env.sh
 	env-netns.sh
 
-Key pair for logging into test machines
+Key pair for logging into test machines.  *Use them only if your test machines are secure and safe within internal network!*
 
 	ovs.id_rsa								private identity key
 	ovs.id_rsa.pub							public key

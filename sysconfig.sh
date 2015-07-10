@@ -30,9 +30,13 @@ sudo rpm -ihv "$iperf"
 #  - https://spredzy.wordpress.com/2013/11/22/enable-network-namespaces-in-centos-6-4/
 #  - http://www.xiaomastack.com/2015/04/05/centos6-ip-netns/
 #
-# Care should be take that `ip netns` command can fail randomly on CentOS 6.6 (see env-netns.sh for details)
+# Care should be take that `ip netns` command can fail randomly on CentOS 6.6
+# (see env-netns.sh for details).  Rebooting the system may help in case that
+# it fails so frequently that you cannot complete the environment setup with
+# netns-env-xxx.sh
 #
-# The following is for CentOS 6.6
+# The following is for CentOS 6.6.  CentOS 7 iproute comes with `ip netns`
+# support by itself
 sudo yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-icehouse/rdo-release-icehouse-4.noarch.rpm
 sudo yum install -y iproute
 sudo yum install -y bridge-utils

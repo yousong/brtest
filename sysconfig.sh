@@ -44,8 +44,11 @@ sudo yum install -y bridge-utils
 # irq affinity
 sudo service puppet stop
 sudo service irqbalance stop
-sudo ./set_irq_affinity.sh eth0
-for i in $(seq 124 140); do echo $i $(sudo cat /proc/irq/$i/smp_affinity{,_list}); done
+
+device="eth0"
+qints="$(cat /proc/interrupts | grep "$device" | cut -f1 -d:)"
+sudo ./set_irq_affinity.sh "$device"
+for i in $qints; do echo $i $(sudo cat /proc/irq/$i/smp_affinity{,_list}); done
 
 # RSS
 sudo ethtool -N eth0 rx-flow-hash udp4 sdfn

@@ -22,9 +22,9 @@ __logdir="$TOPDIR/logs.$(basename "$0")"
 
 
 # ssh -i "$__identity" $__username@host
-__username="sankuai"
+__username="yousong"
 # identity file used to login into all hosts
-__identity="/home/sankuai/yousong/perf/ovs.id_rsa"
+__identity="/home/yousong/brtest/ovs.id_rsa"
 
 
 # iperf start port

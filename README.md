@@ -8,7 +8,7 @@ Parameters for running test
 	env.sh
 	env-netns.sh
 
-Key pair for logging into test machines.  *Use them only if your test machines are secure and safe within internal network!*
+Key pair for logging into test machines.  *Use them in this repo only if your test machines are secure and safe within internal network!*
 
 	ovs.id_rsa								private identity key
 	ovs.id_rsa.pub							public key
@@ -49,13 +49,15 @@ Util scripts
 Facts about tests in this project
 
 - They happen between at most 2 physical hosts.
-- Configuring the two hosts before running any tests is a necessary step for consistent result between different runs.  Commands in `sysconfig.sh` can serve as a reference
-- Netperf 2.6.0 is used for the most of the time
+- Net namespaces are used in `t-netns-xxx.sh` tests.
+- Configuring the two hosts before running any tests is a necessary step for consistent result between different runs
+	- Commands in `sysconfig.sh` can serve as a reference
+- Netperf 2.6.0 is used for most of the time
 - Iperf2 is only used in TCP bulk transfer test for comparison with netperf
 
 Preparation steps for `env.sh`
 
-1. Set shell variable `host07`, `host08` in `env.sh`.  They are the 2 hosts involved in tests
+1. Set shell variables `host07`, `host08` in `env.sh`.  They are the 2 hosts involved in tests
 2. Check if the following variables can get a correct value
 
 		ip07, ip08
@@ -103,9 +105,9 @@ Bridge setup and teardown (teardown is implicit)
 
 For `*RR` type tests, 4 columns are presented in the `sum` (summary) output
 
-- 1st column is the value used in `-r`
-- 2nd column is ethernet frame size by adding 58 (`20 + 20 + 18)` to the value in 1st column
-- 3rd column is the sum of reported TPS (transaction per second) value from netperf instance(s)
+- 1st column is the value used for `-r`
+- 2nd column is ethernet frame size by adding 58 (TCP: `20 + 20 + 18)` or 46 (UDP: `8 + 20 + 18`) to the value in 1st column
+- 3rd column is the sum of reported tps (transaction per second) value from netperf instance(s)
 - 4th column is the calculated transmission rate (bits/s) based on the ethernet frame size and tps
 
 Some test results are collected in `out/` directory

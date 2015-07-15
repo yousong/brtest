@@ -68,17 +68,7 @@ runtest() {
 }
 
 summary() {
-	local s
-	local frame_size total_trans rate
-	local hlen="$(_hlen_from_test "$_test")"
-	local sum_action="$(_sum_from_test "$_test")"
-
-	for s in $_ssizes; do
-		frame_size="$(($s + $hlen))"
-		total_trans="$($sum_action "$_out_raw.$s")"
-		rate="$(echo "$frame_size * 8 * $total_trans" | bc )"
-		echo "$s $frame_size $total_trans $rate"
-	done | column -t
+	sum_netperf_aggregate
 }
 
 main "$@"

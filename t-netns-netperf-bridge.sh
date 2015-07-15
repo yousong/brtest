@@ -65,9 +65,9 @@ runtest() {
 			prcr="$(( $i % $__nprcr ))"
 			port="$(($__nperf_sport + $i))"
 
-			ip netns exec "ovsnet$i" taskset -c "$prcr" netperf -H "$_ovss" -p "$(($__nperf_sport + $i))" -l "$__testlen" -t "$_test" -- $_testopt $(_args_rrsize "$s") &
+			ip netns exec "ovsnet$i" taskset -c "$prcr" netperf -H "$_ovss" -p "$port" -l "$__testlen" -t "$_test" -- $_testopt $(_args_rrsize "$s") &
 		done >"$_out_raw.$s"
-		# wait for the result
+		# wait for result
 		wait
 	done
 }

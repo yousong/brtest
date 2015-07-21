@@ -66,8 +66,40 @@ sudo ethtool -K eth0 gso off
 sudo ethtool -K eth0 gro off
 sudo ethtool -k eth0
 
+## Interrupt coalescing
+#
+#sudo ethtool -C eth0 adaptive-rx on
+#sudo ethtool -c eth0
+
+## Ring buffer
+#
+#sudo ethtool -G eth0 rx 8192 tx 8192
+#sudo ethtool -g eth0
+
 # handle TCP TIME_WAIT
 sudo ./time-wait.sh setup
+
+# TCP extensions for high performance
+sudo sysctl -w net.ipv4.tcp_timestamp=1
+sudo sysctl -w net.ipv4.tcp_sack=1
+sudo sysctl -w net.ipv4.tcp_window_scaling=1
+
+## SoftIRQ
+##
+## - 2nd column for dropped (net.core.netdev_max_backlog)
+## - 3rd column for time_squeeze (net.core.netdev_budget)
+#
+#cat /proc/net/softnet_stat
+#
+#sysctl net.core.netdev_budget
+#sysctl net.core.netdev_max_backlog
+
+## CPU power states
+##
+# kernel command line
+#
+#processor.max_cstate=1 intel_idle.max_cstate=0
+#
 
 # setup notrack on host
 sudo ./notrack.sh setup
@@ -78,3 +110,5 @@ sudo sh -c 'echo 1 >/proc/sys/net/ipv4/ip_forward'
 
 #rsync rsync://172.30.10.157:7873/
 #rsync -aP rsync://172.30.10.157:7873/pub .
+
+## Red Hat Enterprise Linux Network Performance Tuning Guide, Jamie Bainbridge and Jon Maxwell, 03/25/2015

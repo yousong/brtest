@@ -46,6 +46,8 @@ sudo yum install -y bridge-utils
 #rsync -aP rsync://172.30.10.157:7873/pub .
 
 # irq affinity
+#
+# Linux kernel documentation on networkings scaling, https://www.kernel.org/doc/Documentation/networking/scaling.txt
 sudo service puppet stop
 sudo service irqbalance stop
 

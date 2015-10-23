@@ -10,14 +10,14 @@ resolve_ip() {
 	# DNS requests from $_netns_netmask (within namespaces).
 	#
 	# If that is the case, you can replace here with a case statement.
-	#ip="$(host "$h" | grep -o -m1 ' [0-9.]\+$')"
-	#ip="${ip# }"
-	#echo "$ip"
+	ip="$(host "$h" | grep -o -m1 ' [0-9.]\+$')"
+	ip="${ip# }"
+	echo "$ip"
 
-	h="${h#yf-mhost0}"
-	h="${h#yf-mhost}"
-	h="$(($h + 9))"
-	echo "10.4.22.$h"
+	#h="${h#yf-mhost0}"
+	#h="${h#yf-mhost}"
+	#h="$(($h + 9))"
+	#echo "10.4.22.$h"
 }
 
 # Get IPv4 address of the interface with netmask

@@ -4,9 +4,9 @@ Scripts mainly for testing bridge implementations (Linux bridge and Open vSwitch
 
 Parameters for running test
 
-	args-netperf.sh
-	env.sh
-	env-netns.sh
+	args-netperf.sh							intends to be sourced by t-*-netperf.sh for parsing command line arguments
+	env.sh									for speciyfing test machines and host access parameters, etc.
+	env-netns.sh							parameters for netns setup
 
 Key pair for logging into test machines.  *Use them in this repo only if your test machines are secure and safe within internal network!*
 
@@ -15,7 +15,7 @@ Key pair for logging into test machines.  *Use them in this repo only if your te
 
 Rsync config file for loading myself into test machines
 
-	rsyncd.conf
+	rsyncd.conf								rsync --config rsyncd.conf --daemon
 
 Utils functions that can be sourced (no function execution would happen there)
 

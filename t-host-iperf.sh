@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # Author: Yousong Zhou <yszhou4tech AT gmail.com>
 #

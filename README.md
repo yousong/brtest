@@ -66,7 +66,7 @@ Preparation steps for `env.sh`
 
 3. Set variable `__username` for logging into `host07` and `host08`
 4. Set variable `__identity` as the path to the identity file for passwordless login with ssh
-5. Remember to copy public key corresponding to `$__identity` to `authorized_keys` of `$__username` and set appropriate permission bits
+5. Remember to copy public key corresponding to `$__identity` to `authorized_keys` of `$__username` and set appropriate permission bits (e.g. `chmod 600 ovs.id_rsa`)
 
 `env-netns.sh` contains parameters for setting up bridges and their port members.  Details can be found in the code comments there.
 

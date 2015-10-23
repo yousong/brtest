@@ -75,6 +75,20 @@ __initialize() {
 			exit 254
 			;;
 	esac
+
+	cat >&2 <<EOF
+Host and IP detection result summary:
+
+	hostself: $hostself
+	hostpeer: $hostpeer
+	ipself: $ipself
+	ippeer: $ippeer
+
+	host07: $host07
+	hostpeer: $hostpeer
+	ip07: $ip07
+	ippeer: $ippeer
+EOF
 }
 __initialize
 

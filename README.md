@@ -111,3 +111,9 @@ For `*RR` type tests, 4 columns are presented in the `sum` (summary) output
 - 4th column is the calculated transmission rate (bits/s) based on the ethernet frame size and tps
 
 Some test results are collected in `out/` directory
+
+## Refs
+
+- Benchmarking Methodology for Network Interconnect Devices, https://tools.ietf.org/html/rfc2544
+- High Performance Packet Processing on Cloud Platforms using Linux with Intel® Architecture, https://networkbuilders.intel.com/docs/network_builders_RA_packet_processing.pdf
+- Network Function Virtualization: Intel® Data Plane Development Kit vSwitch with Linux* Virtualization and Intel® Architecture, https://networkbuilders.intel.com/docs/Network_Builders_RA_DPDK_vSwitch_Final.pdf

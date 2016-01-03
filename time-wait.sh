@@ -3,8 +3,6 @@
 # Author: Yousong Zhou <yszhou4tech AT gmail.com>
 #
 
-. "$PWD/env.sh"
-
 time_wait_setup() {
 	sh -c 'echo 1      >/proc/sys/net/ipv4/tcp_tw_reuse'
 	sh -c 'echo 1      >/proc/sys/net/ipv4/tcp_tw_recycle'

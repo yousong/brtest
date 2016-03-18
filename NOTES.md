@@ -165,12 +165,14 @@ Details about the driver is available in `Documentation/networking/`
 
 	http://downloadmirror.intel.com/22919/eng/README.txt
 
+Also try tuning driver options
+
 ### [set_irq_affinity.sh](https://gist.github.com/yousong/dedbe18a9dfaa383df4e)
 
 Stop `puppet` and `irqbalance`.
 
 - `irqbalance` has its own magic setting irq affinity
-- `puppet` will try laborious to sync the system setting and bring up `irqbalance` if it is stopped
+- `puppet` will try laboriously to sync the system setting and bring up `irqbalance` if it is stopped
 
 		sudo service puppet stop
 		sudo service irqbalance stop
@@ -287,6 +289,16 @@ Are you running a kernel configured with debugging and hacking features enabled?
 
 			/proc/sys/net/ipv4/tcp_fin_timeout
 
+	- TIME_WAIT to CLOSED is 2 MSL (Maximum Segment Lifetime).  MSL was defined in RFC 793 "arbitarily" as 2 minutes.  It's 60 seconds in Linux kernel defined as a macro.
+
+			// include/net/tcp.h
+			 117 #define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
+			 118                                   * state, about 60 seconds     */
+
+	- port range for ephemeral ports
+
+			sysctl -w net.ipv4.ip_local_port_range="1024 65535"
+
 - TIME_WAIT
 
 	- Max number of timwait sockets held by system simultaneously
@@ -300,6 +312,17 @@ Are you running a kernel configured with debugging and hacking features enabled?
 	- Fast recycling TIME_WAIT sockets
 
 			/proc/sys/net/ipv4/tcp_tw_recycle'
+
+- buffer, backlog, congestion control
+
+		net.core.rmem_max = 16777216
+		net.core.wmem_max = 16777216
+		net.ipv4.tcp_rmem = 4096 87380 16777216
+		net.ipv4.tcp_wmem = 4096 65536 16777216
+		net.core.netdev_max_backlog = 250000
+		net.ipv4.tcp_congestion_control = bic'
+
+	`Documentation/networking/ip-sysctl.txt` is our friend in this case
 
 Connection tracking on?
 
